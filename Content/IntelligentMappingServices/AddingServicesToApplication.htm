@@ -66,7 +66,7 @@
             <p>This process is in two parts:</p>
             <ul>
                 <li value="1">Getting a bearer token from UAA, which is used in the second part.</li>
-                <li value="2">Making sure client applications can access Intelligent Mapping model data using Intelligent Mapping service REST API endpoints.</li>
+                <li value="2">Making sure client applications can access geospatial data using Intelligent Mapping service REST API endpoints.</li>
             </ul>
             <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="13" width="16" alt="Closed" data-mc-alt2="Open" /></a><a name="Getting_a_Bearer_Token_from_UAA"></a><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_" style="background-image: none; padding: 0px;">Getting a Bearer Token from UAA</a></span>
                 <div class="MCDropDownBody dropDownBody">
@@ -113,8 +113,9 @@
                     <p>In a REST client:</p>
                     <ol>
                         <li value="1">Choose the POST method.</li>
-                        <li value="2">Enter the URI of your service instance, from the VCAP_SERVICES environment variable.</li>
-                        <li value="3">Add the following HTTP headers per the graphic below the table:</li>
+                        <li value="2">Enter the URI of your service instance, from the VCAP_SERVICES environment variable. To post data, enter:</li>
+                        <li class="code">https://&lt;production URL&gt;/api/collections/coll1</li>
+                        <li value="3">Add the following HTTP headers to the request:</li>
                         <li class="continuation">
                             <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/swStripedTable.css');" class="TableStyle-swStripedTable" cellspacing="0">
                                 <col class="TableStyle-swStripedTable-Column-Column1" />
@@ -135,7 +136,7 @@
                                 </tbody>
                             </table>
                         </li>
-                        <li value="4">Enter well-formed JSON in the body of your request.</li>
+                        <li value="4">Enter a well-formed GeoJSON string in the body of your request to store the GeoJSON data in a new collection called <i>coll1</i>.</li>
                     </ol>
                 </div>
             </div>
