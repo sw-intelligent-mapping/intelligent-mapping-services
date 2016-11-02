@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-gb" xml:lang="en-gb" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Getting Started with Intelligent Mapping Services">
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-gb" xml:lang="en-gb" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Getting started with Intelligent Mapping and Dynamic Mapping services">
     <!-- saved from url=(0016)http://localhost -->
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,7 @@
         <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
         <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
         <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
-        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>Adding Intelligent Mapping Services to your Application</title>
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>Adding Intelligent Mapping or Dynamic Mapping services to your application</title>
         <link href="../Resources/TableStyles/swStripedTable.css" rel="stylesheet" data-mc-stylesheet-type="table" />
         <link href="../Resources/Stylesheets/swStyles.css" rel="stylesheet" />
         <meta name="description" content="This article xxx. Smallworld Intelligent Mapping Services" />
@@ -30,8 +30,8 @@
     </head>
     <body>
         <div class="header"><a name="kanchor8"></a>
-            <h1>Adding Intelligent Mapping Services to your Application</h1>
-            <p class="sw_version">Smallworld Intelligent Mapping Services</p>
+            <h1>Adding Intelligent Mapping or Dynamic Mapping services to your application</h1>
+            <p class="sw_version">Smallworld Intelligent Mapping and Dynamic Mapping services</p>
         </div>
         <div class="footer">
             <table style="width: 100%;margin-left: 0;margin-right: auto;">
@@ -46,14 +46,14 @@
                             </p>
                         </td>
                         <td>
-                            <p class="sw_footer_title">Adding Intelligent Mapping Services to your Application</p>
+                            <p class="sw_footer_title">Adding Intelligent Mapping or Dynamic Mapping services to your application</p>
                         </td>
                         <td>
                             <p class="sw_update"><a href="#" onclick="javascript: window.location.href ='mailto:swdocs@ge.com Feedback on article: '+document.title;" class="sw_copyright" title="Send feedback on this article">Send feedback</a>
                             </p>
                         </td>
                         <td>
-                            <p class="sw_update">Last update: 31st May</p>
+                            <p class="sw_update">Last update: 28th September 2016</p>
                         </td>
                     </tr>
                 </tbody>
@@ -66,7 +66,7 @@
             <p>This process is in two parts:</p>
             <ul>
                 <li value="1">Getting a bearer token from UAA, which is used in the second part.</li>
-                <li value="2">Making sure client applications can access geospatial data using Intelligent Mapping service REST API endpoints.</li>
+                <li value="2">Making sure client applications can access geospatial data using Intelligent Mapping or Dynamic Mapping service REST API endpoints.</li>
             </ul>
             <div class="MCDropDown MCDropDown_Open dropDown"><span class="MCDropDownHead dropDownHead"><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_"><img class="MCDropDown_Image_Icon" src="../../Skins/Default/Stylesheets/Images/transparent.gif" height="13" width="16" alt="Closed" data-mc-alt2="Open" /></a><a name="Getting_a_Bearer_Token_from_UAA"></a><a href="javascript:void(0);" class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_" style="background-image: none; padding: 0px;">Getting a Bearer Token from UAA</a></span>
                 <div class="MCDropDownBody dropDownBody">
@@ -114,7 +114,7 @@
                     <ol>
                         <li value="1">Choose the POST method.</li>
                         <li value="2">Enter the URI of your service instance, from the VCAP_SERVICES environment variable. To post data, enter:</li>
-                        <li class="code">https://&lt;production URL&gt;/api/collections/coll1</li>
+                        <li class="code">https://&lt;production URL&gt;/v1/collections/coll1</li>
                         <li value="3">Add the following HTTP headers to the request:</li>
                         <li class="continuation">
                             <table style="width: 100%;mc-table-style: url('../Resources/TableStyles/swStripedTable.css');" class="TableStyle-swStripedTable" cellspacing="0">
@@ -130,8 +130,12 @@
                                         <td class="TableStyle-swStripedTable-BodyD-Column1-Body2">Enter the token you receive from UAA in the form of <b>Bearer &lt;token from trusted issuer&gt;</b> in the <a href="#Getting_a_Bearer_Token_from_UAA" class="MCXref xref selected">Getting a Bearer Token from UAA</a> procedure.</td>
                                     </tr>
                                     <tr class="TableStyle-swStripedTable-Body-Body1">
-                                        <td class="TableStyle-swStripedTable-BodyB-Column1-Body1">Predix-Zone-Id</td>
-                                        <td class="TableStyle-swStripedTable-BodyA-Column1-Body1">	Enter the ID required to make REST calls, using the <b>instanceId</b> value specified in the VCAP-SERVICES environment variable.</td>
+                                        <td class="TableStyle-swStripedTable-BodyE-Column1-Body1">Predix-Zone-Id</td>
+                                        <td class="TableStyle-swStripedTable-BodyD-Column1-Body1">	Enter the ID required to make REST calls, using the <b>instanceId</b> value specified in the VCAP-SERVICES environment variable.</td>
+                                    </tr>
+                                    <tr class="TableStyle-swStripedTable-Body-Body2">
+                                        <td class="TableStyle-swStripedTable-BodyB-Column1-Body2">X-Subtenant-Id</td>
+                                        <td class="TableStyle-swStripedTable-BodyA-Column1-Body2">Enter an ID to identify a subtenant within the Predix-Zone-Id. If no subtenants are needed, use the Predix-Zone-Id.</td>
                                     </tr>
                                 </tbody>
                             </table>
