@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Intelligent Mapping API</title>
+  <!--<link rel="icon" type="image/png" href="images/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="images/favicon-16x16.png" sizes="16x16" />-->
+  <link href='css/typography.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='css/reset.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='css/reset.css' media='print' rel='stylesheet' type='text/css'/>
+  <link href='css/print.css' media='print' rel='stylesheet' type='text/css'/>
+
+  <script src='lib/object-assign-pollyfill.js' type='text/javascript'></script>
+  <script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.wiggle.min.js' type='text/javascript'></script>
+  <script src='lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
+  <script src='lib/handlebars-4.0.5.js' type='text/javascript'></script>
+  <script src='lib/lodash.min.js' type='text/javascript'></script>
+  <script src='lib/backbone-min.js' type='text/javascript'></script>
+  <script src='swagger-ui.js' type='text/javascript'></script>
+  <script src='lib/highlight.9.1.0.pack.js' type='text/javascript'></script>
+  <script src='lib/highlight.9.1.0.pack_extended.js' type='text/javascript'></script>
+  <script src='lib/jsoneditor.min.js' type='text/javascript'></script>
+  <script src='lib/marked.js' type='text/javascript'></script>
+  <script src='lib/swagger-oauth.js' type='text/javascript'></script>
+
+  <!-- Some basic translations -->
+  <!-- <script src='lang/translator.js' type='text/javascript'></script> -->
+  <!-- <script src='lang/ru.js' type='text/javascript'></script> -->
+  <!-- <script src='lang/en.js' type='text/javascript'></script> -->
+
+  <script type="text/javascript">
+    $(function () {
+      var url = window.location.search.match(/url=([^&]+)/);
+      if (url && url.length > 1) {
+        url = decodeURIComponent(url[1]);
+      } else {
+		url = "https://sw-intelligent-mapping.github.io/smallworld-mapping-services/dist/ims_publicSwagger.yaml";
+      }
+
+      hljs.configure({
+        highlightSizeThreshold: 5000
+      });
+
+      // Pre load translate..
+      if(window.SwaggerTranslator) {
+        window.SwaggerTranslator.translate();
+      }
+      window.swaggerUi = new SwaggerUi({
+        url: url,
+        dom_id: "swagger-ui-container",
+        supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+        onComplete: function(swaggerApi, swaggerUi){
+          if(typeof initOAuth == "function") {
+            initOAuth({
+              clientId: "your-client-id",
+              clientSecret: "your-client-secret-if-required",
+              realm: "your-realms",
+              appName: "your-app-name",
+              scopeSeparator: " ",
+              additionalQueryStringParams: {}
+            });
+          }
+
+          if(window.SwaggerTranslator) {
+            window.SwaggerTranslator.translate();
+          }
+        },
+        onFailure: function(data) {
+          log("Unable to Load SwaggerUI");
+        },
+        docExpansion: "none",
+        jsonEditor: false,
+        defaultModelRendering: 'schema',
+        showRequestHeaders: false
+      });
+
+      window.swaggerUi.load();
+
+      function log() {
+        if ('console' in window) {
+          console.log.apply(console, arguments);
+        }
+      }
+  });
+  </script>
+  
+  <style>
+
+.CS_general {background-color: #bcbcbc; color: #ffffff;}
+.CS_put {background-color: #FF9821; color: #ffffff;}
+.CS_post {background-color: #3AB4D4; color: #ffffff;}
+.CS_get {background-color: #2886AF; color: #ffffff;}
+.CS_delete {background-color: #B71125; color: #ffffff;}
+
+.box {
+	border: 1px solid #000000; 
+	width: 900px;
+	font-family: Arial, verdana, sans-serif;
+	margin-top: 10px;
+}
+.column1 {
+	float: left;
+	width: 450px
+	height: 600px;
+}
+.column2 {
+	width: 450px;
+	height: 600px;
+	margin-left: 455px;
+	}
+
+.cell {
+	border: 1px solid #000000; 
+	width: 445px;
+	font-family: Arial, verdana, sans-serif;
+	margin-top: 10px;
+}
+
+.heading, .content {
+	padding: 5px;
+	}
+	
+.content {
+	font-size: 90%;}	
+</style>
+
+</head>
+
+<body class="swagger-section">
+<!--<div id='header'>
+  <div class="swagger-ui-wrap">
+    <a id="logo" href="http://swagger.io"><img class="logo__img" alt="swagger" height="30" width="30" src="images/logo_small.png" /><span class="logo__title">swagger</span></a>
+    <form id='api_selector'>
+      <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
+      <div id='auth_container'></div>
+      <div class='input'><a id="explore" class="header__btn" href="#" data-sw-translate>Explore</a></div>
+    </form>
+  </div>
+</div>
+-->
+
+<div id="cheat_sheet" class="swagger-ui-wrap">
+
+
+<h1>Intelligent Mapping API</h1>
+
+<h1>Summary</h1>
+
+
+<div class="box">
+	<div class="heading CS_general"><b>Headers</b></div>
+	<div class="content">
+		Predix-Zone-Id: 785aabb0-a626-47a1-837c-78b3dba266eb</br>
+		X-Subtenant-Id: subtenant1</br>
+		Authorization: Bearer eyJhbGciOiJSUzI..</br>
+		Content-Type: application/json</br>
+	</div>
+</div>
+
+
+<div class="box">
+	<div class="heading CS_general"><b>Endpoints</b></div>
+	<div class="content">
+		BASIC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://intelligent-mapping-prod.run.aws-usw02-pr.ice.predix.io/v1/..</br>
+		SELECT 	&nbsp;&nbsp; https://intelligent-mapping-prod.run.asv-pr.ice.predix.io/v1/..
+	</div>
+</div>
+
+<div class="column1">
+
+
+
+	<div class="cell">
+		<div class="heading CS_post"><b>Add a collection</b></div>
+		<div class="content">
+			POST ..v1/collections/transformers</br>
+			BODY</br>
+			{"type":"FeatureCollection","features":[{</br>
+			&nbsp;&nbsp;"type": "Feature","id":"TX001","properties": {"amenity":"Doctor"},</br>
+			&nbsp;&nbsp;"geometry": {"type": "LineString",</br>
+			&nbsp;&nbsp;"coordinates": [[2.109375,45.1510532655634],</br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[5.712890625,43.45291889355465],</br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[7.03125,42.68243539838623]</br>
+			&nbsp;&nbsp;]}}]</br>
+			}</br>
+		</div>
+	</div>
+
+	<div class="cell">
+		<div class="heading CS_post"><b>Add a feature to a collection</b></div>
+		<div class="content">
+			POST ..v1/collections/transformers/features?id=TX002</br>
+			BODY</br>
+			{"type": "Feature","id":"TX002","properties": {"amenity":"Dentist"},</br>
+			&nbsp;&nbsp;"geometry": {"type": "LineString",</br>
+			&nbsp;&nbsp;"coordinates": [[2.109375,45.1510532655634],</br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[5.712890625,43.45291889355465],</br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[7.03125,42.68243539838623]</br>
+			&nbsp;&nbsp;]}</br>
+			}
+</br>
+		</div>
+	</div>
+
+	<div class="cell">
+		<div class="heading CS_put"><b>Update a feature in a collection</b></div>
+		<div class="content">
+			PUT ..v1/collections/transformers/features?id=TX001</br>
+			BODY</br>
+			{"type": "Feature","id":"TX001",</br>
+			&nbsp;&nbsp;"properties": {"WD13NM":"Histon and Impington"},</br>
+			&nbsp;&nbsp;"geometry": {"type": "LineString",</br>
+			&nbsp;&nbsp;"coordinates": [[2.109375,45.1510532655634],</br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[5.712890625,43.45291889355465],</br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[7.03125,42.68243539838623]</br>
+			&nbsp;&nbsp;]}</br>
+			}
+		</div>
+	</div>
+	
+	<div class="cell">
+		<div class="heading CS_get"><b>List all collections</b></div>
+		<div class="content">
+			GET ..v1/collections</br>
+		</div>
+	</div>
+
+	<div class="cell">
+		<div class="heading CS_delete"><b>Delete a collection</b></div>
+		<div class="content">
+			DELETE ..v1/collections/transformers</br>
+		</div>
+</div>
+
+	<div class="cell">
+		<div class="heading CS_get"><b>Get a feature from a collection</b></div>
+		<div class="content">
+			GET ..v1/collections/transformers/features?id=TX001
+		</div>
+	</div>
+
+
+	
+</div>
+<div class="column2">
+
+	<div class="cell">
+		<div class="heading CS_delete"><b>Delete a feature from a collection</b></div>
+		<div class="content">
+			DELETE ..v1/collections/transformers/features?id=TX001
+		</div>
+</div>
+
+	<div class="cell">
+		<div class="heading CS_get"><b>Cluster the features within a collection</b></div>
+		<div class="content">
+			GET ..v1/collections/transformers/cluster?
+   zoomLevel=15&left=0&right=4&bottom=46&top=50
+		</div>
+</div>
+
+	<div class="cell">
+		<div class="heading CS_get"><b>Get all features in a collection</b></div>
+		<div class="content">
+			GET ..v1/collections/transformers</br>
+		</div>
+	</div>
+
+	<div class="cell">
+		<div class="heading CS_get"><b>Find all features in a collection within a bounding box</b></div>
+		<div class="content">
+				GET /v1/collections/transformers/spatial-query/bbox-interacts?left=0&right=4&bottom=46&top=50
+		</div>
+	</div>
+	
+	<div class="cell">
+		<div class="heading CS_post"><b>Get all point features within an area</b></div>
+		<div class="content">
+			POST ..v1/collections/tranformers/spatial-query?operator=within</br>
+			BODY</br>
+			{"geometry":<br>
+			&nbsp;&nbsp;{"type": "Polygon","coordinates": [[<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[10.452117919921875,46.5441628418975],<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[10.481042861938477,46.546051895137865],<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[10.483617782592772,46.51705950058313],<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[10.460100173950195,46.5165279273188],<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[10.468168258666992,46.531232869403546],<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;[10.452117919921875,46.5441628418975]<br>
+			&nbsp;&nbsp;]]}</br>
+			}
+		</div>
+	</div>	
+	
+	<div class="cell">
+		<div class="heading CS_get"><b>Find all features in a collection that match a search term</b></div>
+		<div class="content">
+				GET ..v1/collections/transformers/text?q=overloaded
+		</div>
+	</div>
+	
+	<div class="cell">
+		<div class="heading CS_post"><b>Get nearest point feature in a collection</b></div>
+		<div class="content">
+			POST ..v1/collections/tranformers/spatial-query?operator=nearest</br>
+			BODY</br>
+			{</br>
+			&nbsp;&nbsp;"longitude": -1,</br>
+			&nbsp;&nbsp;"latitude": 50</br>
+			}
+		</div>
+	</div>	
+
+		<div class="cell">
+		<div class="heading CS_get"><b>Count the number of features in a collection</b></div>
+		<div class="content">
+				GET ..v1/collections/transformers/collectionSize
+		</div>
+	</div>
+	
+</div>
+
+</div>
+
+<div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
+<div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+</body>
+</html>
